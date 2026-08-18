@@ -63,6 +63,77 @@ a real thing people do.
   guessing based on the port number convention, not confirmed by actual
   banner/response data. Don't trust it as fact — verify manually.
 
+## Worked example — scanning my own PC (2026-07-19)
+
+Confirming the tool works first:
+
+```text
+C:\Users\malik>nmap --version
+Nmap version 7.98 ( https://nmap.org )
+Platform: i686-pc-windows-windows
+Compiled with: nmap-liblua-5.4.8 openssl-3.0.17 nmap-libssh2-1.11.1 nmap-libz-1.3.1 nmap-libpcre2-10.45 Npcap-1.83 nmap-libdnet-1.18.0 ipv6
+Compiled without:
+Available nsock engines: iocp poll select
+```
+
+Finding my own local IP before scanning anything:
+
+```text
+C:\Users\malik>ipconfig
+
+Wireless LAN adapter Wi-Fi:
+
+   Connection-specific DNS Suffix  . :
+   IPv4 Address. . . . . . . . . . . : 192.168.43.4
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.43.1
+```
+
+> If connected via cable instead of Wi-Fi, look for "Ethernet adapter
+> Ethernet" instead of "Wireless LAN adapter Wi-Fi" — different section,
+> same idea.
+
+Basic scan:
+
+```text
+$ nmap 192.168.1.25
+
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE  SERVICE
+21/tcp   open   ftp
+554/tcp  open   rtsp
+1723/tcp open   pptp
+5060/tcp open   sip
+
+Final times for host: srtt: 35176 rttvar: 9020  to: 100000
+```
+
+Scanned 2026-07-19 18:39:31 SLST, took 76s.
+
+Version scan on the same target:
+
+```text
+$ nmap -sV 192.168.1.25
+
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-07-19 18:42 +0530
+Nmap scan report for 192.168.1.25
+Host is up (0.045s latency).
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE  SERVICE  VERSION
+21/tcp   open   ftp?
+554/tcp  open   rtsp?
+1723/tcp open   pptp?
+5060/tcp open   sip?
+```
+
+Port breakdown from this scan:
+- **554 (RTSP)** — Real Time Streaming Protocol
+- **1723 (PPTP)** — Point-to-Point Tunneling Protocol, used for VPN connections
+- **5060 (SIP)** — Session Initiation Protocol, used for VoIP/communication systems
+- The `?` on every service here means Nmap is guessing from port number
+  convention alone, not a confirmed banner response — matches the
+  "don't trust it as fact" point above, in practice.
+
 ## Common ports worth having memorized
 
 | Port | Service | Notes |
