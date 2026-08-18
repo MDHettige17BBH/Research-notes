@@ -104,3 +104,30 @@ into scanning something you were never authorized to touch.
   see `Bug-bounty-writeups/hack-the-box-academy/Tier-0/`
 - `general-techniques/burp-workflow.md` — the equivalent base workflow
   once you're past network recon and into an actual web application
+
+## Other scan types worth knowing
+
+Beyond the four core scans above, these come up often enough to know
+by name — not daily-driver commands, but recognize them when you see
+them in someone else's writeup or a program's testing notes:
+
+```bash
+nmap -sX <TARGET_IP>      # XMAS scan — sets FIN, PSH, URG flags
+nmap -sF <TARGET_IP>      # FIN scan — sends only the FIN flag
+nmap -sN <TARGET_IP>      # NULL scan — no flags set at all
+nmap -sA <TARGET_IP>      # ACK scan — used to map firewall rules, not find open ports
+nmap -iL targets.txt      # scan a list of targets from a file
+nmap --script <script>    # run a specific NSE (Nmap Scripting Engine) script
+nmap --top-ports 100      # scan just the N most common ports — faster, less thorough
+```
+
+**Why XMAS/FIN/NULL exist:** they're designed to slip past older or
+poorly configured firewalls that only filter based on the SYN flag,
+since these scans never send one. Against a modern stateful firewall
+they're mostly ineffective and often just get logged as noise — but
+worth recognizing since they show up in older writeups and some CTF
+contexts.
+
+**ACK scans don't tell you if a port is open** — they tell you whether
+a firewall is filtering it at all. Different question entirely from the
+scans above; used for firewall rule mapping, not service discovery.
