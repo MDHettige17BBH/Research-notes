@@ -1,4 +1,5 @@
 Source: Bugcrowd blog
+
 [Bugcrowd - Access Control vs. Account Takeover](https://www.bugcrowd.com/blog/access-control-vs-account-takeover-what-bug-bounty-hunters-need-to-know/)
 date_read: 2026-07-28
 
