@@ -1,6 +1,8 @@
 # Article Title -
 
-**Source:Link:Date Read:** YYYY-MM-DD
+**Source:Link**:
+
+**Date Read:** YYYY-MM-DD
 
 ## Summary
 -
