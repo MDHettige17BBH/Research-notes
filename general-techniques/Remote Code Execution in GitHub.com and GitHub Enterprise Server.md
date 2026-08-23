@@ -2,7 +2,7 @@
 
 **Source: Link:** https://www.wiz.io/blog/github-rce-vulnerability-cve-2026-3854
 
-Detailed remediation steps and further technical details : https://github.blog/security/securing-the-git-push-pipeline-responding-to-a-critical-remote-code-execution-vulnerability/
+**Detailed remediation steps and further technical details** : https://github.blog/security/securing-the-git-push-pipeline-responding-to-a-critical-remote-code-execution-vulnerability/
 
 **Note:** CVE-2026-3854
 
