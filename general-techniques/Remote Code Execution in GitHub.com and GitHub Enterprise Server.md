@@ -4,6 +4,8 @@
 
 **Detailed remediation steps and further technical details** : https://github.blog/security/securing-the-git-push-pipeline-responding-to-a-critical-remote-code-execution-vulnerability/
 
+**GitHub response:** how GitHub validated it, understood the root cause, fixed it, investigated exploitation, and added defense-in-depth. [Read GitHub's response](https://github.blog/security/securing-the-git-push-pipeline-responding-to-a-critical-remote-code-execution-vulnerability/)
+
 **Note:** CVE-2026-3854
 
 **Date Read:** 2026-08-23
